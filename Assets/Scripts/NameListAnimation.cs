@@ -14,6 +14,6 @@ public class NameListAnimation : MonoBehaviour
         m_NameList = GameObject.Find("NameList").GetComponentInChildren<Text>();
         m_TargetPos = GameObject.Find("TargetPos").transform;
 
-        m_NameList.transform.DOMove(m_TargetPos.position, 15.0f);
+        m_NameList.transform.DOMove(m_TargetPos.position, 15.0f).SetEase(Ease.Linear);
     }
 }

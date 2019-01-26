@@ -14,6 +14,7 @@ public class GameCore : MonoBehaviour
     private int m_Hungry = 0;
     private int m_Money = 10000;
     private HashSet<string> m_SelectItem = new HashSet<string>();
+    private bool m_SelectingBranch = false;
 
 	void Start ()
     {
@@ -149,7 +150,10 @@ public class GameCore : MonoBehaviour
         }
         else if (EventManager.CurrentEvent == Event.STORY_TEXT_NEXT)
         {
-            m_StoryManager.ContinueStory();
+            if (!m_SelectingBranch)
+            {
+                m_StoryManager.ContinueStory();
+            }
         }
         /////////////////////////////////////////////////////////////////////////////////////
         else if (EventManager.CurrentEvent == Event.BRANCH_TRIGGER)
@@ -158,6 +162,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetSelectVisible(true);
             m_UIManager.SetSelectText(Branch.LeftBranchText, Branch.RightBranchText);
             m_UIManager.SetBackgroundImage(Branch.BackgroundImage);
+            m_SelectingBranch = true;
 
             if (Branch.BGMPath.Length > 0)
             {
@@ -174,6 +179,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetAvatorVisible(false);
             m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
             m_StoryManager.ContinueStory();
+            m_SelectingBranch = false;
         }
         else if (EventManager.CurrentEvent == Event.BRANCH_SELECT_RIGHT)
         {
@@ -184,6 +190,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetAvatorVisible(false);
             m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
             m_StoryManager.ContinueStory();
+            m_SelectingBranch = false;
         }
         /////////////////////////////////////////////////////////////////////////////////////
         else if (EventManager.CurrentEvent == Event.GAME_TRIGGER)

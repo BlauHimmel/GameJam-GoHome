@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private Slider m_StationSlider;
+    private Image m_StatioBar;
 
     private Text m_PropertyHappyText;
     private Image m_PropertyHappyIcon;
@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
     private GameObject m_ProgressGO;
     private Text m_ProgressText;
-    private Slider m_ProgressSlider;
+    private Image m_ProgressBar;
 
     private GameObject m_SelectGO;
     private Button m_SelectLeftButton;
@@ -55,8 +55,7 @@ public class UIManager : MonoBehaviour
 
     public void Init()
     {
-        m_StationSlider = GameObject.Find("Station").GetComponentInChildren<Slider>();
-        m_StationSlider.interactable = false;
+        m_StatioBar = GameObject.Find("Station").GetComponentInChildren<Image>();
 
         m_PropertyHappyText = GameObject.Find("Happy").GetComponentInChildren<Text>();
         m_PropertyHappyIcon = GameObject.Find("Happy").GetComponentInChildren<Image>();
@@ -70,8 +69,7 @@ public class UIManager : MonoBehaviour
 
         m_ProgressGO = GameObject.Find("Progress");
         m_ProgressText = GameObject.Find("Progress").GetComponentInChildren<Text>();
-        m_ProgressSlider = GameObject.Find("Progress").GetComponentInChildren<Slider>();
-        m_ProgressSlider.interactable = false;
+        m_ProgressBar = GameObject.Find("ProgressBar").GetComponentInChildren<Image>();
 
         m_SelectGO = GameObject.Find("Select");
         m_SelectLeftButton = GameObject.Find("SelectLeft").GetComponentInChildren<Button>();
@@ -215,7 +213,7 @@ public class UIManager : MonoBehaviour
         {
             m_ProgressText.text = Text;
         }
-        if (m_ProgressSlider != null)
+        if (m_ProgressBar != null)
         {
             StartCoroutine(ProgressCountDownCoroutine(Seconds, Callback));
         }
@@ -223,9 +221,9 @@ public class UIManager : MonoBehaviour
 
     public void SetStationProgress(float Progress)
     {
-        if (m_StationSlider != null)
+        if (m_StatioBar != null)
         {
-            m_StationSlider.value = Progress;
+            m_StatioBar.fillAmount = Progress;
         }
     }
 
@@ -450,7 +448,7 @@ public class UIManager : MonoBehaviour
         {
             Seconds -= TIME_STEP;
             float Percentage = Seconds / TotalTime;
-            m_ProgressSlider.value = Percentage;
+            m_ProgressBar.fillAmount = Percentage;
             yield return new WaitForSeconds(TIME_STEP);
         }
         Callback();

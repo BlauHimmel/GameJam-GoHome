@@ -16,7 +16,10 @@ MonoBehaviour:
       Enable: 1
       Text: "\u5E2E\u4E0B\u5FD9\u5457"
       AudioPath: sample
-      RequestItems: []
+      RequestItems:
+      - "\u7269\u54C11"
+      - "\u7269\u54C13"
+      - "\u7269\u54C15"
       FailurePropertyCast:
         Enable: 1
         CastAttribute: 3
@@ -25,11 +28,15 @@ MonoBehaviour:
         Enable: 1
         CastAttribute: 3
         AttributeNumber: 50
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     StoryNode:
       Enable: 0
       Text: 
       CharacterName: 
       AudioPath: 
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     BranchNode:
       Enable: 0
       LeftBranchText: 
@@ -42,6 +49,8 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     ActionNode:
       Enable: 0
       LeftActionText: 
@@ -56,6 +65,8 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
   - GameNode:
       Enable: 0
       Text: 
@@ -69,11 +80,15 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     StoryNode:
       Enable: 1
       Text: "\u67E5\u7968\u4E86\u67E5\u7968\u4E86"
       CharacterName: "\u552E\u7968\u5458"
       AudioPath: 
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     BranchNode:
       Enable: 0
       LeftBranchText: 
@@ -86,6 +101,8 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     ActionNode:
       Enable: 0
       LeftActionText: 
@@ -100,6 +117,8 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
   - GameNode:
       Enable: 0
       Text: 
@@ -113,11 +132,15 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     StoryNode:
       Enable: 0
       Text: 
       CharacterName: 
       AudioPath: 
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     BranchNode:
       Enable: 1
       LeftBranchText: "\u7ED9\u4ED6\u770B\u7968"
@@ -130,6 +153,8 @@ MonoBehaviour:
         Enable: 1
         CastAttribute: 1
         AttributeNumber: -5
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
     ActionNode:
       Enable: 0
       LeftActionText: 
@@ -144,4 +169,6 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
+      BackgroundImage: {fileID: 0}
+      BGMPath: 
   IsMainQuest: 1
