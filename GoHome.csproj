@@ -306,6 +306,7 @@
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GameCore.cs" />
+    <Compile Include="Assets\Scripts\StartupUI.cs" />
     <Compile Include="Assets\Scripts\Story.cs" />
     <Compile Include="Assets\Scripts\StoryManager.cs" />
     <Compile Include="Assets\Scripts\TrainItems.cs" />
