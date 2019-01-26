@@ -304,9 +304,6 @@
     <Reference Include="DOTweenEditor">
       <HintPath>Assets/ThridParty/DOTween/Editor/DOTweenEditor.dll</HintPath>
     </Reference>
-    <Reference Include="DOTweenUpgradeManager">
-      <HintPath>Assets/ThridParty/DOTween/Editor/DOTweenUpgradeManager.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets/ThridParty/DOTween/DOTween.dll</HintPath>
     </Reference>
@@ -315,6 +312,7 @@
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GameCore.cs" />
+    <Compile Include="Assets\Scripts\NameListAnimation.cs" />
     <Compile Include="Assets\Scripts\StartupUI.cs" />
     <Compile Include="Assets\Scripts\Story.cs" />
     <Compile Include="Assets\Scripts\StoryManager.cs" />
@@ -332,7 +330,6 @@
   <ItemGroup>
     <None Include="Assets\ThridParty\DOTween\DOTween.XML" />
     <None Include="Assets\ThridParty\DOTween\Editor\DOTweenEditor.XML" />
-    <None Include="Assets\ThridParty\DOTween\Editor\DOTweenUpgradeManager.XML" />
     <None Include="Assets\ThridParty\DOTween\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
