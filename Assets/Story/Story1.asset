@@ -52,8 +52,8 @@ MonoBehaviour:
       Enable: 1
       LeftActionText: "\u5403\u996D"
       RightActionText: "\u7761\u89C9"
-      LeftActionTime: 2
-      RightActionTime: 3
+      LeftActionTime: 1
+      RightActionTime: 1
       LeftActionPropertyCast:
         Enable: 1
         CastAttribute: 2
@@ -104,7 +104,7 @@ MonoBehaviour:
       Enable: 1
       LeftActionText: "\u8BB2\u8BDD"
       RightActionText: "\u718A\u5B69\u5B50"
-      LeftActionTime: 3
+      LeftActionTime: 1
       RightActionTime: 1
       LeftActionPropertyCast:
         Enable: 1
