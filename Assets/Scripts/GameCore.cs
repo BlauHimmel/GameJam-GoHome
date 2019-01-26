@@ -215,7 +215,7 @@ public class GameCore : MonoBehaviour
         else if (EventManager.CurrentEvent == Event.GAME_SUBMIT)
         {
             Story.GameNode Game = (Story.GameNode)m_StoryManager.CurrentNode;
-            bool Success = m_SelectItem.IsSubsetOf(Game.RequestItems);
+            bool Success = m_SelectItem.IsSubsetOf(Game.RequestItems) && m_SelectItem.Count != 0;
             m_SelectItem.Clear();
 
             if (Success)
