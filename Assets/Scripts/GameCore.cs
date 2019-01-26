@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameCore : MonoBehaviour
 {
@@ -54,6 +55,13 @@ public class GameCore : MonoBehaviour
 
         m_StoryManager.StartStory();
         m_StoryManager.ContinueStory();
+        m_StoryManager.SetOnStoryCompleteCallback(() =>
+        {
+            // m_Happy, m_Hungry, m_Money
+            SceneManager.LoadScene("LastScene");
+        });
+
+        Debug.Log("Game core init.");
     }
 
     void OnDestroy()
