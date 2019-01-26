@@ -364,6 +364,8 @@ public class UIManager : MonoBehaviour
         ButtonPrefab[1].SetActive(false);
         ButtonPrefab[2].SetActive(false);
         ButtonPrefab[3].SetActive(false);
+
+        SelectTrainItemsTab(0);
     }
 
     public void ClearItemsButtonMark()
