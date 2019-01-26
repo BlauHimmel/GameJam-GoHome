@@ -6,6 +6,8 @@ using UnityEngine;
 public class StoryManager : MonoBehaviour
 {
     public List<Story> Stories;
+    public TrainItems Items;
+
     public object CurrentNode = null;
     public float CurrentProgress = 0.0f;
     public Story.NodeType CurrentNodeType = Story.NodeType.None;

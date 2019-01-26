@@ -308,6 +308,7 @@
     <Compile Include="Assets\Scripts\GameCore.cs" />
     <Compile Include="Assets\Scripts\Story.cs" />
     <Compile Include="Assets\Scripts\StoryManager.cs" />
+    <Compile Include="Assets\Scripts\TrainItems.cs" />
     <Compile Include="Assets\Scripts\UIEventListener.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>

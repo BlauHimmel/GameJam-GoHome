@@ -39,6 +39,10 @@ public class UIManager : MonoBehaviour
     private Text m_ActionLeftText;
     private Text m_ActionRightText;
 
+    private GameObject m_GamePanelGO;
+    private Button[] m_TrainIdxTabButtons;
+    private GameObject[] m_ItemButtonsPanelGo;
+
     void Start()
     {
         
@@ -83,6 +87,20 @@ public class UIManager : MonoBehaviour
         m_ActionLeftText = GameObject.Find("ActionLeft").GetComponentInChildren<Text>();
         m_ActionRightText = GameObject.Find("ActionRight").GetComponentInChildren<Text>();
 
+        m_GamePanelGO = GameObject.Find("GamePanel");
+
+        m_TrainIdxTabButtons = new Button[4];
+        m_TrainIdxTabButtons[0] = GameObject.Find("TabBtn0").GetComponentInChildren<Button>();
+        m_TrainIdxTabButtons[1] = GameObject.Find("TabBtn1").GetComponentInChildren<Button>();
+        m_TrainIdxTabButtons[2] = GameObject.Find("TabBtn2").GetComponentInChildren<Button>();
+        m_TrainIdxTabButtons[3] = GameObject.Find("TabBtn3").GetComponentInChildren<Button>();
+
+        m_ItemButtonsPanelGo = new GameObject[4];
+        m_ItemButtonsPanelGo[0] = GameObject.Find("ItemButtons0");
+        m_ItemButtonsPanelGo[1] = GameObject.Find("ItemButtons1");
+        m_ItemButtonsPanelGo[2] = GameObject.Find("ItemButtons2");
+        m_ItemButtonsPanelGo[3] = GameObject.Find("ItemButtons3");
+
         BindListener();
 
         Debug.Log("UIManager Init.");
@@ -117,6 +135,14 @@ public class UIManager : MonoBehaviour
         if (m_AvatarGO != null)
         {
             m_AvatarGO.SetActive(IsVisible);
+        }
+    }
+
+    public void SetGamePanelVisible(bool IsVisible)
+    {
+        if (m_GamePanelGO != null)
+        {
+            m_GamePanelGO.SetActive(false);
         }
     }
 
@@ -217,6 +243,103 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void LoadTrainItems(TrainItems Items)
+    {
+        GameObject[] ButtonPrefab = new GameObject[4];
+        ButtonPrefab[0] = GameObject.Find("ButtonPrefabs0");
+        ButtonPrefab[1] = GameObject.Find("ButtonPrefabs1");
+        ButtonPrefab[2] = GameObject.Find("ButtonPrefabs2");
+        ButtonPrefab[3] = GameObject.Find("ButtonPrefabs3");
+
+        GameObject CententGO;
+        CententGO = m_ItemButtonsPanelGo[0].transform.Find("Scroll View/Viewport/Content").gameObject;
+        for (int i = 0; i < Items.ItemsAtTrain0.Count; i++)
+        {
+            var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
+            var Text = Go.GetComponentInChildren<Text>();
+            Text.text = Items.ItemsAtTrain0[i].ItemName;
+        }
+
+        CententGO = m_ItemButtonsPanelGo[1].transform.Find("Scroll View/Viewport/Content").gameObject;
+        for (int i = 0; i < Items.ItemsAtTrain1.Count; i++)
+        {
+            var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
+            var Text = Go.GetComponentInChildren<Text>();
+            Text.text = Items.ItemsAtTrain1[i].ItemName;
+        }
+
+        CententGO = m_ItemButtonsPanelGo[2].transform.Find("Scroll View/Viewport/Content").gameObject;
+        for (int i = 0; i < Items.ItemsAtTrain2.Count; i++)
+        {
+            var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
+            var Text = Go.GetComponentInChildren<Text>();
+            Text.text = Items.ItemsAtTrain2[i].ItemName;
+        }
+
+        CententGO = m_ItemButtonsPanelGo[3].transform.Find("Scroll View/Viewport/Content").gameObject;
+        for (int i = 0; i < Items.ItemsAtTrain3.Count; i++)
+        {
+            var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
+            var Text = Go.GetComponentInChildren<Text>();
+            Text.text = Items.ItemsAtTrain3[i].ItemName;
+        }
+
+        ButtonPrefab[0].SetActive(false);
+        ButtonPrefab[1].SetActive(false);
+        ButtonPrefab[2].SetActive(false);
+        ButtonPrefab[3].SetActive(false);
+    }
+
+    private void SelectTrainItemsTab(int Index)
+    {
+        if (Index < 0 && Index > 4)
+        {
+            return;
+        }
+
+        if (Index == 0)
+        {
+            for (int i = 0; i < m_ItemButtonsPanelGo.Length; i++)
+            {
+                m_ItemButtonsPanelGo[i].SetActive(false);
+                m_TrainIdxTabButtons[i].interactable = true;
+
+            }
+            m_ItemButtonsPanelGo[0].SetActive(true);
+            m_TrainIdxTabButtons[0].interactable = false;
+        }
+        else if (Index == 1)
+        {
+            for (int i = 0; i < m_ItemButtonsPanelGo.Length; i++)
+            {
+                m_ItemButtonsPanelGo[i].SetActive(false);
+                m_TrainIdxTabButtons[i].interactable = true;
+            }
+            m_ItemButtonsPanelGo[1].SetActive(true);
+            m_TrainIdxTabButtons[1].interactable = false;
+        }
+        else if (Index == 2)
+        {
+            for (int i = 0; i < m_ItemButtonsPanelGo.Length; i++)
+            {
+                m_ItemButtonsPanelGo[i].SetActive(false);
+                m_TrainIdxTabButtons[i].interactable = true;
+            }
+            m_ItemButtonsPanelGo[2].SetActive(true);
+            m_TrainIdxTabButtons[2].interactable = false;
+        }
+        else if (Index == 3)
+        {
+            for (int i = 0; i < m_ItemButtonsPanelGo.Length; i++)
+            {
+                m_ItemButtonsPanelGo[i].SetActive(false);
+                m_TrainIdxTabButtons[i].interactable = true;
+            }
+            m_ItemButtonsPanelGo[3].SetActive(true);
+            m_TrainIdxTabButtons[3].interactable = false;
+        }
+    }
+
     private IEnumerator ProgressCountDownCoroutine(float Seconds, Action Callback)
     {
         float TotalTime = Seconds;
@@ -257,5 +380,14 @@ public class UIManager : MonoBehaviour
         {
             EventManager.Trigger(Event.ACTION_CHOOSE_RIGHT, null);
         });
+
+        for (int i = 0; i < m_TrainIdxTabButtons.Length; i++)
+        {
+            int Index = i;
+            m_TrainIdxTabButtons[Index].onClick.AddListener(() =>
+            {
+                SelectTrainItemsTab(Index);
+            });
+        }
     }
 }

@@ -15,6 +15,8 @@ public class GameCore : MonoBehaviour
 
 	void Start ()
     {
+        EventManager.Register(Event.GAME_TRIGGER, EventCallback);
+
         EventManager.Register(Event.STORY_TRIGGER, EventCallback);
         EventManager.Register(Event.STORY_TEXT_NEXT, EventCallback);
 
@@ -31,6 +33,7 @@ public class GameCore : MonoBehaviour
         m_AudioManager = GetComponent<AudioManager>();
 
         m_UIManager.Init();
+        m_UIManager.LoadTrainItems(m_StoryManager.Items);
         m_StoryManager.Init();
         m_AudioManager.Init();
 
@@ -39,6 +42,7 @@ public class GameCore : MonoBehaviour
         m_UIManager.SetStoryTextVisible(false);
         m_UIManager.SetAvatorVisible(false);
         m_UIManager.SetProgressVisible(false);
+        //m_UIManager.SetGamePanelVisible(false);
 
         m_UIManager.SetHappyValue(m_Happy);
         m_UIManager.SetHungryValue(m_Hungry);
@@ -50,6 +54,8 @@ public class GameCore : MonoBehaviour
 
     void OnDestroy()
     {
+        EventManager.Remove(Event.GAME_TRIGGER, EventCallback);
+
         EventManager.Remove(Event.STORY_TRIGGER, EventCallback);
         EventManager.Remove(Event.STORY_TEXT_NEXT, EventCallback);
 
@@ -138,6 +144,11 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetAvatorVisible(false);
             m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
             m_StoryManager.ContinueStory();
+        }
+        /////////////////////////////////////////////////////////////////////////////////////
+        else if (EventManager.CurrentEvent == Event.GAME_TRIGGER)
+        {
+
         }
     }
 

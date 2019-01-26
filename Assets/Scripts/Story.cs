@@ -17,15 +17,24 @@ public class Story : ScriptableObject
 
     public enum NodeType
     {
-        None, Story, Branch, Action
+        None, Story, Branch, Action, Game
     }
 
     [Serializable]
     public struct Node
     {
+        public GameNode GameNode;
         public StoryNode StoryNode;
         public BranchNode BranchNode;
         public ActionNode ActionNode;
+    }
+
+    [Serializable]
+    public struct GameNode
+    {
+        public bool Enable;
+
+        public List<string> m_RequestItems;
     }
 
     [Serializable]

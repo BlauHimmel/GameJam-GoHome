@@ -7,8 +7,11 @@ public enum Event
 {
     NONE,
 
+    GAME_TRIGGER,
+
     STORY_TRIGGER,
     STORY_TEXT_NEXT,
+
     BRANCH_TRIGGER,
     BRANCH_SELECT_LEFT,
     BRANCH_SELECT_RIGHT,
