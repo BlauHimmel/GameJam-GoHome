@@ -46,6 +46,8 @@ public class UIManager : MonoBehaviour
     private Dictionary<string, Text> m_StringTextDict = new Dictionary<string, Text>();
     private Button m_OKButton;
 
+    private Image m_BackgroundImage;
+
     void Start()
     {
         
@@ -106,6 +108,8 @@ public class UIManager : MonoBehaviour
         m_ItemButtonsPanelGo[3] = GameObject.Find("ItemButtons3");
 
         m_OKButton = GameObject.Find("OKButton").GetComponentInChildren<Button>();
+
+        m_BackgroundImage = GameObject.Find("BackgroundImage").GetComponentInChildren<Image>();
 
         BindListener();
 
@@ -377,6 +381,14 @@ public class UIManager : MonoBehaviour
         if (m_GameText != null)
         {
             m_GameText.text = Text;
+        }
+    }
+
+    public void SetBackgroundImage(Sprite Background)
+    {
+        if (m_BackgroundImage != null && Background != null)
+        {
+            m_BackgroundImage.sprite = Background;
         }
     }
 

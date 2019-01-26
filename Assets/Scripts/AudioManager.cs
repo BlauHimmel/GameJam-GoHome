@@ -88,6 +88,20 @@ public class AudioManager : MonoBehaviour
         }
     }
     /// <summary>
+    ///  暂停所有音乐音效
+    /// </summary>
+    public void SoundAllStop()
+    {
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+        if (audioSources != null && audioSources.Length > 0)
+        {
+            foreach (AudioSource audio in audioSources)
+            {
+                Destroy(audio.gameObject);
+            }
+        }
+    }
+    /// <summary>
     /// 设置背景音乐音量
     /// </summary>
     /// <param name="volume"></param>

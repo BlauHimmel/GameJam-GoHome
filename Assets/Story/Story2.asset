@@ -14,9 +14,9 @@ MonoBehaviour:
   Nodes:
   - GameNode:
       Enable: 1
-      m_RequestItems:
-      - "\u7269\u54C11"
-      - "\u7269\u54C15"
+      Text: "\u5E2E\u4E0B\u5FD9\u5457"
+      AudioPath: sample
+      RequestItems: []
       FailurePropertyCast:
         Enable: 1
         CastAttribute: 3
@@ -29,7 +29,7 @@ MonoBehaviour:
       Enable: 0
       Text: 
       CharacterName: 
-      Audio: {fileID: 0}
+      AudioPath: 
     BranchNode:
       Enable: 0
       LeftBranchText: 
@@ -58,7 +58,9 @@ MonoBehaviour:
         AttributeNumber: 0
   - GameNode:
       Enable: 0
-      m_RequestItems: []
+      Text: 
+      AudioPath: 
+      RequestItems: []
       FailurePropertyCast:
         Enable: 0
         CastAttribute: 0
@@ -71,7 +73,7 @@ MonoBehaviour:
       Enable: 1
       Text: "\u67E5\u7968\u4E86\u67E5\u7968\u4E86"
       CharacterName: "\u552E\u7968\u5458"
-      Audio: {fileID: 0}
+      AudioPath: 
     BranchNode:
       Enable: 0
       LeftBranchText: 
@@ -100,7 +102,9 @@ MonoBehaviour:
         AttributeNumber: 0
   - GameNode:
       Enable: 0
-      m_RequestItems: []
+      Text: 
+      AudioPath: 
+      RequestItems: []
       FailurePropertyCast:
         Enable: 0
         CastAttribute: 0
@@ -113,7 +117,7 @@ MonoBehaviour:
       Enable: 0
       Text: 
       CharacterName: 
-      Audio: {fileID: 0}
+      AudioPath: 
     BranchNode:
       Enable: 1
       LeftBranchText: "\u7ED9\u4ED6\u770B\u7968"

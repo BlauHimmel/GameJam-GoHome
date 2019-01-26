@@ -45,7 +45,10 @@ public class StoryManager : MonoBehaviour
     {
         if (m_CurrentStoryIndex >= Stories.Count)
         {
-            m_OnStoryCompleteCallback();
+            if (m_OnStoryCompleteCallback != null)
+            {
+                m_OnStoryCompleteCallback();
+            }
             return false;
         }
 

@@ -39,6 +39,9 @@ public class Story : ScriptableObject
         public List<string> RequestItems;
         public PropertyNode FailurePropertyCast;
         public PropertyNode SuccessPropertyCast;
+
+        public Sprite BackgroundImage;
+        public string BGMPath;
     }
 
     [Serializable]
@@ -49,6 +52,9 @@ public class Story : ScriptableObject
         public string Text;
         public string CharacterName;
         public string AudioPath;
+
+        public Sprite BackgroundImage;
+        public string BGMPath;
     }
 
     [Serializable]
@@ -69,6 +75,9 @@ public class Story : ScriptableObject
         public string RightBranchText;
         public PropertyNode LeftBranchPropertyCast;
         public PropertyNode RightBranchPropertyCast;
+
+        public Sprite BackgroundImage;
+        public string BGMPath;
     }
 
     [Serializable]
@@ -84,5 +93,8 @@ public class Story : ScriptableObject
 
         public PropertyNode LeftActionPropertyCast;
         public PropertyNode RightActionPropertyCast;
+
+        public Sprite BackgroundImage;
+        public string BGMPath;
     }
 }

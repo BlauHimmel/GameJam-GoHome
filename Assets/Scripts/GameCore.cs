@@ -83,6 +83,12 @@ public class GameCore : MonoBehaviour
             Story.ActionNode Action = (Story.ActionNode)m_StoryManager.CurrentNode;
             m_UIManager.SetActionVisible(true);
             m_UIManager.SetActionText(Action.LeftActionText, Action.RightActionText);
+            m_UIManager.SetBackgroundImage(Action.BackgroundImage);
+            if (Action.BGMPath.Length > 0)
+            {
+                m_AudioManager.BGMStop();
+                m_AudioManager.BGMPlay(Action.BGMPath);
+            }
         }
         else if (EventManager.CurrentEvent == Event.ACTION_CHOOSE_LEFT)
         {
@@ -120,10 +126,16 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetStoryText(Story.Text);
             m_UIManager.SetAvatorVisible(true);
             m_UIManager.SetAvatorData(null, Story.CharacterName);
+            m_UIManager.SetBackgroundImage(Story.BackgroundImage);
+            if (Story.BGMPath.Length > 0)
+            {
+                m_AudioManager.BGMStop();
+                m_AudioManager.BGMPlay(Story.BGMPath);
+            }
 
             if (Story.AudioPath.Length > 0)
             {
-                m_AudioManager.SoundAllPause();
+                m_AudioManager.SoundAllStop();
                 m_AudioManager.SoundPlay(Story.AudioPath);
             }
         }
@@ -137,6 +149,13 @@ public class GameCore : MonoBehaviour
             Story.BranchNode Branch = (Story.BranchNode)m_StoryManager.CurrentNode;
             m_UIManager.SetSelectVisible(true);
             m_UIManager.SetSelectText(Branch.LeftBranchText, Branch.RightBranchText);
+            m_UIManager.SetBackgroundImage(Branch.BackgroundImage);
+
+            if (Branch.BGMPath.Length > 0)
+            {
+                m_AudioManager.BGMStop();
+                m_AudioManager.BGMPlay(Branch.BGMPath);
+            }
         }
         else if (EventManager.CurrentEvent == Event.BRANCH_SELECT_LEFT)
         {
@@ -164,10 +183,17 @@ public class GameCore : MonoBehaviour
             Story.GameNode Game = (Story.GameNode)m_StoryManager.CurrentNode;
             m_UIManager.SetGamePanelText(Game.Text);
             m_UIManager.SetGamePanelVisible(true);
+            m_UIManager.SetBackgroundImage(Game.BackgroundImage);
+
+            if (Game.BGMPath.Length > 0)
+            {
+                m_AudioManager.BGMStop();
+                m_AudioManager.BGMPlay(Game.BGMPath);
+            }
 
             if (Game.AudioPath.Length > 0)
             {
-                m_AudioManager.SoundAllPause();
+                m_AudioManager.SoundAllStop();
                 m_AudioManager.SoundPlay(Game.AudioPath);
             }
         }
