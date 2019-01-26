@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2d5fa30019b424bb73c32065fdc0dd, type: 3}
+  m_Name: Story2
+  m_EditorClassIdentifier: 
+  Nodes:
+  - StoryNode:
+      Enable: 1
+      Text: "\u67E5\u7968\u4E86\u67E5\u7968\u4E86"
+      CharacterName: "\u552E\u7968\u5458"
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 0
+      LeftBranchText: 
+      RightBranchText: 
+      LeftBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    ActionNode:
+      Enable: 0
+      LeftActionText: 
+      RightActionText: 
+      LeftActionTime: 0
+      RightActionTime: 0
+      LeftActionPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightActionPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+  - StoryNode:
+      Enable: 0
+      Text: 
+      CharacterName: 
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 1
+      LeftBranchText: "\u7ED9\u4ED6\u770B\u7968"
+      RightBranchText: "\u4E0D\u7ED9"
+      LeftBranchPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: 5
+      RightBranchPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: -5
+    ActionNode:
+      Enable: 0
+      LeftActionText: 
+      RightActionText: 
+      LeftActionTime: 0
+      RightActionTime: 0
+      LeftActionPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightActionPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+  IsMainQuest: 1

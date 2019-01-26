@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2d5fa30019b424bb73c32065fdc0dd, type: 3}
+  m_Name: Story1
+  m_EditorClassIdentifier: 
+  Nodes:
+  - StoryNode:
+      Enable: 0
+      Text: 
+      CharacterName: 
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 0
+      LeftBranchText: 
+      RightBranchText: 
+      LeftBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    ActionNode:
+      Enable: 1
+      LeftActionText: "\u5403\u996D"
+      RightActionText: "\u7761\u89C9"
+      LeftActionTime: 2
+      RightActionTime: 3
+      LeftActionPropertyCast:
+        Enable: 1
+        CastAttribute: 2
+        AttributeNumber: 5
+      RightActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: 10
+  - StoryNode:
+      Enable: 0
+      Text: 
+      CharacterName: 
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 0
+      LeftBranchText: 
+      RightBranchText: 
+      LeftBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    ActionNode:
+      Enable: 1
+      LeftActionText: "\u8BB2\u8BDD"
+      RightActionText: "\u718A\u5B69\u5B50"
+      LeftActionTime: 3
+      RightActionTime: 1
+      LeftActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: 5
+      RightActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: -10
+  - StoryNode:
+      Enable: 1
+      Text: "\u811A\u8BA9\u4E00\u4E0B\u554A"
+      CharacterName: "\u5927\u5988"
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 0
+      LeftBranchText: 
+      RightBranchText: 
+      LeftBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    ActionNode:
+      Enable: 1
+      LeftActionText: "\u8BB2\u8BDD"
+      RightActionText: "\u718A\u5B69\u5B50"
+      LeftActionTime: 6
+      RightActionTime: 2
+      LeftActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: 5
+      RightActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: -10
+  - StoryNode:
+      Enable: 1
+      Text: "\u4E70\u996D\u4E0D\uFF1F50\u5757\u94B1\u4E00\u4EFD\u3002"
+      CharacterName: "\u5927\u5988"
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 0
+      LeftBranchText: 
+      RightBranchText: 
+      LeftBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    ActionNode:
+      Enable: 1
+      LeftActionText: "\u8BB2\u8BDD"
+      RightActionText: "\u718A\u5B69\u5B50"
+      LeftActionTime: 6
+      RightActionTime: 2
+      LeftActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: 5
+      RightActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: -10
+  - StoryNode:
+      Enable: 0
+      Text: 
+      CharacterName: 
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 1
+      LeftBranchText: "\u4E70"
+      RightBranchText: "\u4E0D\u4E70"
+      LeftBranchPropertyCast:
+        Enable: 1
+        CastAttribute: 3
+        AttributeNumber: -50
+      RightBranchPropertyCast:
+        Enable: 1
+        CastAttribute: 2
+        AttributeNumber: 5
+    ActionNode:
+      Enable: 1
+      LeftActionText: "\u8BB2\u8BDD"
+      RightActionText: "\u718A\u5B69\u5B50"
+      LeftActionTime: 6
+      RightActionTime: 2
+      LeftActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: 5
+      RightActionPropertyCast:
+        Enable: 1
+        CastAttribute: 1
+        AttributeNumber: -10
+  IsMainQuest: 1
