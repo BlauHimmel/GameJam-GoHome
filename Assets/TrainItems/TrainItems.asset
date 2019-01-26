@@ -12,17 +12,14 @@ MonoBehaviour:
   m_Name: TrainItems
   m_EditorClassIdentifier: 
   ItemsAtTrain0:
-  - ItemName: "\u7269\u54C11"
-  - ItemName: "\u7269\u54C12"
+  - ItemName: "\u86CB\u5305\u996D"
+  - ItemName: "\u7092\u996D"
   ItemsAtTrain1:
-  - ItemName: "\u7269\u54C13"
-  - ItemName: "\u7269\u54C14"
-  - ItemName: "\u7269\u54C15"
+  - ItemName: "\u9A6C\u6876\u76D6"
   ItemsAtTrain2:
-  - ItemName: "\u7269\u54C16"
-  - ItemName: "\u7269\u54C17"
+  - ItemName: "\u65B9\u4FBF\u9762"
+  - ItemName: "\u997C\u5E72"
   ItemsAtTrain3:
-  - ItemName: "\u7269\u54C18"
-  - ItemName: "\u7269\u54C19"
-  - ItemName: "\u7269\u54C110"
-  - ItemName: "\u7269\u54C111"
+  - ItemName: "\u77FF\u6CC9\u6C34"
+  - ItemName: "\u53EF\u4E50"
+  - ItemName: "\u9762\u5305"

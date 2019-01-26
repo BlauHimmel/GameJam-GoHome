@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -877,7 +877,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0bc4e06b7731c343b01a5f53f1e3ff2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d392757c509ab2240bfda9843c41c2a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -894,8 +894,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 260135405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0.09, z: 0.014720464}
-  m_LocalScale: {x: 2.1547534, y: 2.1547534, z: 2.1547534}
+  m_LocalPosition: {x: -0.238, y: -0.298, z: 0.014720464}
+  m_LocalScale: {x: 0.5957622, y: 0.506847, z: 2.1547534}
   m_Children: []
   m_Father: {fileID: 357976495}
   m_RootOrder: 0
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1882,8 +1882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stories:
-  - {fileID: 11400000, guid: 91423945f3ee2cf49a41d56836db6441, type: 2}
-  - {fileID: 11400000, guid: 30f5d83ff7ded60498f9752ed9ef4448, type: 2}
+  - {fileID: 11400000, guid: 736bd8fb524c97a4db436a16f3619662, type: 2}
   Items: {fileID: 11400000, guid: 3803437a78ca29140b2d31ce8142c95c, type: 2}
   CurrentProgress: 0
   CurrentNodeType: 0
@@ -3293,7 +3292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3691,7 +3690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

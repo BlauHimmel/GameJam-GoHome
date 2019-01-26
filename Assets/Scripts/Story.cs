@@ -39,6 +39,7 @@ public class Story : ScriptableObject
         public List<string> RequestItems;
         public PropertyNode FailurePropertyCast;
         public PropertyNode SuccessPropertyCast;
+        public string FailureText;
 
         public Sprite BackgroundImage;
         public string BGMPath;
@@ -51,6 +52,7 @@ public class Story : ScriptableObject
 
         public string Text;
         public string CharacterName;
+        public Sprite Icon;
         public string AudioPath;
 
         public Sprite BackgroundImage;

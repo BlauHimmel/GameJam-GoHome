@@ -15,6 +15,8 @@ public class GameCore : MonoBehaviour
     private int m_Money = 10000;
     private HashSet<string> m_SelectItem = new HashSet<string>();
     private bool m_SelectingBranch = false;
+    private bool m_Gaming = false;
+    private bool m_Animating = false;
 
 	void Start ()
     {
@@ -25,6 +27,8 @@ public class GameCore : MonoBehaviour
 
         EventManager.Register(Event.STORY_TRIGGER, EventCallback);
         EventManager.Register(Event.STORY_TEXT_NEXT, EventCallback);
+        EventManager.Register(Event.TEXT_ANIMATING_START, EventCallback);
+        EventManager.Register(Event.TEXT_ANIMATING_END, EventCallback);
 
         EventManager.Register(Event.ACTION_TRIGGER, EventCallback);
         EventManager.Register(Event.ACTION_CHOOSE_LEFT, EventCallback);
@@ -74,6 +78,8 @@ public class GameCore : MonoBehaviour
 
         EventManager.Remove(Event.STORY_TRIGGER, EventCallback);
         EventManager.Remove(Event.STORY_TEXT_NEXT, EventCallback);
+        EventManager.Remove(Event.TEXT_ANIMATING_START, EventCallback);
+        EventManager.Remove(Event.TEXT_ANIMATING_END, EventCallback);
 
         EventManager.Remove(Event.ACTION_TRIGGER, EventCallback);
         EventManager.Remove(Event.ACTION_CHOOSE_LEFT, EventCallback);
@@ -134,7 +140,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetStoryTextVisible(true);
             m_UIManager.SetStoryText(Story.Text);
             m_UIManager.SetAvatorVisible(true);
-            m_UIManager.SetAvatorData(null, Story.CharacterName);
+            m_UIManager.SetAvatorData(Story.Icon, Story.CharacterName);
             m_UIManager.SetBackgroundImage(Story.BackgroundImage);
             if (Story.BGMPath.Length > 0)
             {
@@ -150,10 +156,18 @@ public class GameCore : MonoBehaviour
         }
         else if (EventManager.CurrentEvent == Event.STORY_TEXT_NEXT)
         {
-            if (!m_SelectingBranch)
+            if (!m_SelectingBranch && !m_Gaming && !m_Animating)
             {
                 m_StoryManager.ContinueStory();
             }
+        }
+        else if (EventManager.CurrentEvent == Event.TEXT_ANIMATING_START)
+        {
+            m_Animating = true;
+        }
+        else if (EventManager.CurrentEvent == Event.TEXT_ANIMATING_END)
+        {
+            m_Animating = false;
         }
         /////////////////////////////////////////////////////////////////////////////////////
         else if (EventManager.CurrentEvent == Event.BRANCH_TRIGGER)
@@ -199,6 +213,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetGamePanelText(Game.Text);
             m_UIManager.SetGamePanelVisible(true);
             m_UIManager.SetBackgroundImage(Game.BackgroundImage);
+            m_Gaming = true;
 
             if (Game.BGMPath.Length > 0)
             {
@@ -223,10 +238,12 @@ public class GameCore : MonoBehaviour
                 UpdatePropertyByNode(Game.SuccessPropertyCast);
                 m_UIManager.SetGamePanelVisible(false);
                 m_StoryManager.ContinueStory();
+                m_Gaming = false;
             }
             else
             {
                 UpdatePropertyByNode(Game.FailurePropertyCast);
+                m_UIManager.SetGamePanelText(Game.FailureText);
                 m_UIManager.ClearItemsButtonMark();
             }
         }

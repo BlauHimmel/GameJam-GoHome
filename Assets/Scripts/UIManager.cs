@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -166,7 +167,15 @@ public class UIManager : MonoBehaviour
     {
         if (m_StoryText != null)
         {
-            m_StoryText.text = Text;
+            EventManager.Trigger(Event.TEXT_ANIMATING_START, null);
+            m_StoryText.text = string.Empty;
+            float Time = Text.Length / 25.0f;
+            var Tweener = m_StoryText.DOText(Text, Time);
+            Tweener.onComplete += () =>
+            {
+                EventManager.Trigger(Event.TEXT_ANIMATING_END, null);
+            };
+            Tweener.SetEase(Ease.Linear);
         }
     }
 
