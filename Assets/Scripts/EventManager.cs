@@ -8,6 +8,9 @@ public enum Event
     NONE,
 
     GAME_TRIGGER,
+    GAME_SUBMIT,
+    SELECT_ITEM,
+    DESELECT_ITEM,
 
     STORY_TRIGGER,
     STORY_TEXT_NEXT,

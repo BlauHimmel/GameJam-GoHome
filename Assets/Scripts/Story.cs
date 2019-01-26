@@ -34,7 +34,11 @@ public class Story : ScriptableObject
     {
         public bool Enable;
 
-        public List<string> m_RequestItems;
+        public string Text;
+        public string AudioPath;
+        public List<string> RequestItems;
+        public PropertyNode FailurePropertyCast;
+        public PropertyNode SuccessPropertyCast;
     }
 
     [Serializable]
@@ -44,7 +48,7 @@ public class Story : ScriptableObject
 
         public string Text;
         public string CharacterName;
-        public AudioClip Audio;
+        public string AudioPath;
     }
 
     [Serializable]

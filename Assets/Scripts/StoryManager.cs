@@ -18,6 +18,8 @@ public class StoryManager : MonoBehaviour
     private int m_MainQuestNum = 0;
     private int m_CurrentMainQuestIndex = -1;
 
+    private Action m_OnStoryCompleteCallback;
+
     void Start()
     {
 
@@ -26,6 +28,11 @@ public class StoryManager : MonoBehaviour
     void OnDestroy()
     {
         
+    }
+
+    public void SetOnStoryCompleteCallback(Action Callback)
+    {
+        m_OnStoryCompleteCallback = Callback;
     }
 
     public void StartStory()
@@ -38,6 +45,7 @@ public class StoryManager : MonoBehaviour
     {
         if (m_CurrentStoryIndex >= Stories.Count)
         {
+            m_OnStoryCompleteCallback();
             return false;
         }
 
@@ -62,6 +70,12 @@ public class StoryManager : MonoBehaviour
             CurrentNodeType = Story.NodeType.Action;
             CurrentNode = Node.ActionNode;
             EventManager.Trigger(Event.ACTION_TRIGGER, null);
+        }
+        else if (Node.GameNode.Enable)
+        {
+            CurrentNodeType = Story.NodeType.Game;
+            CurrentNode = Node.GameNode;
+            EventManager.Trigger(Event.GAME_TRIGGER, null);
         }
 
         if (m_CurrentNodeIndex < CurrentStory.Nodes.Count - 1)

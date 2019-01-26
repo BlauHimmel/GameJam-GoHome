@@ -12,10 +12,14 @@ public class GameCore : MonoBehaviour
     private int m_Happy = 100;
     private int m_Hungry = 0;
     private int m_Money = 10000;
+    private HashSet<string> m_SelectItem = new HashSet<string>();
 
 	void Start ()
     {
         EventManager.Register(Event.GAME_TRIGGER, EventCallback);
+        EventManager.Register(Event.GAME_SUBMIT, EventCallback);
+        EventManager.Register(Event.SELECT_ITEM, EventCallback);
+        EventManager.Register(Event.DESELECT_ITEM, EventCallback);
 
         EventManager.Register(Event.STORY_TRIGGER, EventCallback);
         EventManager.Register(Event.STORY_TEXT_NEXT, EventCallback);
@@ -42,7 +46,7 @@ public class GameCore : MonoBehaviour
         m_UIManager.SetStoryTextVisible(false);
         m_UIManager.SetAvatorVisible(false);
         m_UIManager.SetProgressVisible(false);
-        //m_UIManager.SetGamePanelVisible(false);
+        m_UIManager.SetGamePanelVisible(false);
 
         m_UIManager.SetHappyValue(m_Happy);
         m_UIManager.SetHungryValue(m_Hungry);
@@ -55,6 +59,9 @@ public class GameCore : MonoBehaviour
     void OnDestroy()
     {
         EventManager.Remove(Event.GAME_TRIGGER, EventCallback);
+        EventManager.Remove(Event.GAME_SUBMIT, EventCallback);
+        EventManager.Remove(Event.SELECT_ITEM, EventCallback);
+        EventManager.Remove(Event.DESELECT_ITEM, EventCallback);
 
         EventManager.Remove(Event.STORY_TRIGGER, EventCallback);
         EventManager.Remove(Event.STORY_TEXT_NEXT, EventCallback);
@@ -82,7 +89,7 @@ public class GameCore : MonoBehaviour
             Story.ActionNode Action = (Story.ActionNode)m_StoryManager.CurrentNode;
             m_UIManager.SetActionVisible(false);
             m_UIManager.SetProgressVisible(true);
-            m_UIManager.ProgressCountDown(Action.LeftActionText, Action.LeftActionTime, ()=>
+            m_UIManager.ProgressCountDown(Action.LeftActionText, Action.LeftActionTime, () =>
             {
                 Story.PropertyNode PropertyNode = Action.LeftActionPropertyCast;
                 UpdatePropertyByNode(PropertyNode);
@@ -113,6 +120,12 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetStoryText(Story.Text);
             m_UIManager.SetAvatorVisible(true);
             m_UIManager.SetAvatorData(null, Story.CharacterName);
+
+            if (Story.AudioPath.Length > 0)
+            {
+                m_AudioManager.SoundAllPause();
+                m_AudioManager.SoundPlay(Story.AudioPath);
+            }
         }
         else if (EventManager.CurrentEvent == Event.STORY_TEXT_NEXT)
         {
@@ -148,8 +161,45 @@ public class GameCore : MonoBehaviour
         /////////////////////////////////////////////////////////////////////////////////////
         else if (EventManager.CurrentEvent == Event.GAME_TRIGGER)
         {
+            Story.GameNode Game = (Story.GameNode)m_StoryManager.CurrentNode;
+            m_UIManager.SetGamePanelText(Game.Text);
+            m_UIManager.SetGamePanelVisible(true);
 
+            if (Game.AudioPath.Length > 0)
+            {
+                m_AudioManager.SoundAllPause();
+                m_AudioManager.SoundPlay(Game.AudioPath);
+            }
         }
+        else if (EventManager.CurrentEvent == Event.GAME_SUBMIT)
+        {
+            Story.GameNode Game = (Story.GameNode)m_StoryManager.CurrentNode;
+            bool Success = m_SelectItem.IsSubsetOf(Game.RequestItems);
+            m_SelectItem.Clear();
+
+            if (Success)
+            {
+                UpdatePropertyByNode(Game.SuccessPropertyCast);
+                m_UIManager.SetGamePanelVisible(false);
+                m_StoryManager.ContinueStory();
+            }
+            else
+            {
+                UpdatePropertyByNode(Game.FailurePropertyCast);
+                m_UIManager.ClearItemsButtonMark();
+            }
+        }
+        else if (EventManager.CurrentEvent == Event.SELECT_ITEM)
+        {
+            string ItemName = (string)Args[0];
+            m_SelectItem.Add(ItemName);
+        }
+        else if (EventManager.CurrentEvent == Event.DESELECT_ITEM)
+        {
+            string ItemName = (string)Args[0];
+            m_SelectItem.Remove(ItemName);
+        }
+        /////////////////////////////////////////////////////////////////////////////////////
     }
 
     private void UpdatePropertyByNode(Story.PropertyNode PropertyNode)

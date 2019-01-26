@@ -40,8 +40,11 @@ public class UIManager : MonoBehaviour
     private Text m_ActionRightText;
 
     private GameObject m_GamePanelGO;
+    private Text m_GameText;
     private Button[] m_TrainIdxTabButtons;
     private GameObject[] m_ItemButtonsPanelGo;
+    private Dictionary<string, Text> m_StringTextDict = new Dictionary<string, Text>();
+    private Button m_OKButton;
 
     void Start()
     {
@@ -88,6 +91,7 @@ public class UIManager : MonoBehaviour
         m_ActionRightText = GameObject.Find("ActionRight").GetComponentInChildren<Text>();
 
         m_GamePanelGO = GameObject.Find("GamePanel");
+        m_GameText = GameObject.Find("GameText").GetComponentInChildren<Text>();
 
         m_TrainIdxTabButtons = new Button[4];
         m_TrainIdxTabButtons[0] = GameObject.Find("TabBtn0").GetComponentInChildren<Button>();
@@ -100,6 +104,8 @@ public class UIManager : MonoBehaviour
         m_ItemButtonsPanelGo[1] = GameObject.Find("ItemButtons1");
         m_ItemButtonsPanelGo[2] = GameObject.Find("ItemButtons2");
         m_ItemButtonsPanelGo[3] = GameObject.Find("ItemButtons3");
+
+        m_OKButton = GameObject.Find("OKButton").GetComponentInChildren<Button>();
 
         BindListener();
 
@@ -142,7 +148,7 @@ public class UIManager : MonoBehaviour
     {
         if (m_GamePanelGO != null)
         {
-            m_GamePanelGO.SetActive(false);
+            m_GamePanelGO.SetActive(IsVisible);
         }
     }
 
@@ -258,6 +264,23 @@ public class UIManager : MonoBehaviour
             var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
             var Text = Go.GetComponentInChildren<Text>();
             Text.text = Items.ItemsAtTrain0[i].ItemName;
+            var Btn = Go.GetComponentInChildren<Button>();
+            int Index = i;
+            string ItemName = Items.ItemsAtTrain0[Index].ItemName;
+            m_StringTextDict[ItemName] = Text;
+            Btn.onClick.AddListener(() =>
+            {
+                if (Text.text.Contains("*"))
+                {
+                    Text.text = Text.text.Remove(Text.text.Length - 1);
+                    EventManager.Trigger(Event.DESELECT_ITEM, new object[] { ItemName });
+                }
+                else
+                {
+                    Text.text += "*";
+                    EventManager.Trigger(Event.SELECT_ITEM, new object[] { ItemName });
+                }
+            });
         }
 
         CententGO = m_ItemButtonsPanelGo[1].transform.Find("Scroll View/Viewport/Content").gameObject;
@@ -266,6 +289,23 @@ public class UIManager : MonoBehaviour
             var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
             var Text = Go.GetComponentInChildren<Text>();
             Text.text = Items.ItemsAtTrain1[i].ItemName;
+            var Btn = Go.GetComponentInChildren<Button>();
+            int Index = i;
+            string ItemName = Items.ItemsAtTrain1[Index].ItemName;
+            m_StringTextDict[ItemName] = Text;
+            Btn.onClick.AddListener(() =>
+            {
+                if (Text.text.Contains("*"))
+                {
+                    Text.text = Text.text.Remove(Text.text.Length - 1);
+                    EventManager.Trigger(Event.DESELECT_ITEM, new object[] { ItemName });
+                }
+                else
+                {
+                    Text.text += "*";
+                    EventManager.Trigger(Event.SELECT_ITEM, new object[] { ItemName });
+                }
+            });
         }
 
         CententGO = m_ItemButtonsPanelGo[2].transform.Find("Scroll View/Viewport/Content").gameObject;
@@ -274,6 +314,23 @@ public class UIManager : MonoBehaviour
             var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
             var Text = Go.GetComponentInChildren<Text>();
             Text.text = Items.ItemsAtTrain2[i].ItemName;
+            var Btn = Go.GetComponentInChildren<Button>();
+            int Index = i;
+            string ItemName = Items.ItemsAtTrain2[Index].ItemName;
+            m_StringTextDict[ItemName] = Text;
+            Btn.onClick.AddListener(() =>
+            {
+                if (Text.text.Contains("*"))
+                {
+                    Text.text = Text.text.Remove(Text.text.Length - 1);
+                    EventManager.Trigger(Event.DESELECT_ITEM, new object[] { ItemName });
+                }
+                else
+                {
+                    Text.text += "*";
+                    EventManager.Trigger(Event.SELECT_ITEM, new object[] { ItemName });
+                }
+            });
         }
 
         CententGO = m_ItemButtonsPanelGo[3].transform.Find("Scroll View/Viewport/Content").gameObject;
@@ -282,12 +339,45 @@ public class UIManager : MonoBehaviour
             var Go = GameObject.Instantiate(ButtonPrefab[i], CententGO.transform);
             var Text = Go.GetComponentInChildren<Text>();
             Text.text = Items.ItemsAtTrain3[i].ItemName;
+            var Btn = Go.GetComponentInChildren<Button>();
+            int Index = i;
+            string ItemName = Items.ItemsAtTrain3[Index].ItemName;
+            m_StringTextDict[ItemName] = Text;
+            Btn.onClick.AddListener(() =>
+            {
+                if (Text.text.Contains("*"))
+                {
+                    Text.text = Text.text.Remove(Text.text.Length - 1);
+                    EventManager.Trigger(Event.DESELECT_ITEM, new object[] { ItemName });
+                }
+                else
+                {
+                    Text.text += "*";
+                    EventManager.Trigger(Event.SELECT_ITEM, new object[] { ItemName });
+                }
+            });
         }
 
         ButtonPrefab[0].SetActive(false);
         ButtonPrefab[1].SetActive(false);
         ButtonPrefab[2].SetActive(false);
         ButtonPrefab[3].SetActive(false);
+    }
+
+    public void ClearItemsButtonMark()
+    {
+        foreach (var Kv in m_StringTextDict)
+        {
+            Kv.Value.text = Kv.Key;
+        }
+    }
+
+    public void SetGamePanelText(string Text)
+    {
+        if (m_GameText != null)
+        {
+            m_GameText.text = Text;
+        }
     }
 
     private void SelectTrainItemsTab(int Index)
@@ -389,5 +479,10 @@ public class UIManager : MonoBehaviour
                 SelectTrainItemsTab(Index);
             });
         }
+
+        m_OKButton.onClick.AddListener(() =>
+        {
+            EventManager.Trigger(Event.GAME_SUBMIT, null);
+        });
     }
 }

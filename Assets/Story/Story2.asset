@@ -12,7 +12,62 @@ MonoBehaviour:
   m_Name: Story2
   m_EditorClassIdentifier: 
   Nodes:
-  - StoryNode:
+  - GameNode:
+      Enable: 1
+      m_RequestItems:
+      - "\u7269\u54C11"
+      - "\u7269\u54C15"
+      FailurePropertyCast:
+        Enable: 1
+        CastAttribute: 3
+        AttributeNumber: -100
+      SuccessPropertyCast:
+        Enable: 1
+        CastAttribute: 3
+        AttributeNumber: 50
+    StoryNode:
+      Enable: 0
+      Text: 
+      CharacterName: 
+      Audio: {fileID: 0}
+    BranchNode:
+      Enable: 0
+      LeftBranchText: 
+      RightBranchText: 
+      LeftBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightBranchPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    ActionNode:
+      Enable: 0
+      LeftActionText: 
+      RightActionText: 
+      LeftActionTime: 0
+      RightActionTime: 0
+      LeftActionPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      RightActionPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+  - GameNode:
+      Enable: 0
+      m_RequestItems: []
+      FailurePropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      SuccessPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    StoryNode:
       Enable: 1
       Text: "\u67E5\u7968\u4E86\u67E5\u7968\u4E86"
       CharacterName: "\u552E\u7968\u5458"
@@ -43,7 +98,18 @@ MonoBehaviour:
         Enable: 0
         CastAttribute: 0
         AttributeNumber: 0
-  - StoryNode:
+  - GameNode:
+      Enable: 0
+      m_RequestItems: []
+      FailurePropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+      SuccessPropertyCast:
+        Enable: 0
+        CastAttribute: 0
+        AttributeNumber: 0
+    StoryNode:
       Enable: 0
       Text: 
       CharacterName: 
