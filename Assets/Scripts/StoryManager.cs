@@ -93,6 +93,7 @@ public class StoryManager : MonoBehaviour
             if (m_CurrentStoryIndex < Stories.Count && Stories[m_CurrentStoryIndex].IsMainQuest)
             {
                 m_CurrentMainQuestIndex++;
+                EventManager.Trigger(Event.STATION_ARRIVED, null);
             }
         }
 

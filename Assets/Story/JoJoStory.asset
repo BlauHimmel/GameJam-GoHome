@@ -123,7 +123,7 @@ MonoBehaviour:
   - GameNode:
       Enable: 1
       Text: "\u597D\u7684\uFF0C\u8BF7\u60A8\u7A0D\u7B49"
-      AudioPath: "\u6211"
+      AudioPath: "\u77ED\u4FE1\u63D0\u793A"
       RequestItems:
       - "\u86CB\u5305\u996D"
       FailurePropertyCast:

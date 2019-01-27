@@ -991,7 +991,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -999,7 +999,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Name
@@ -1883,6 +1883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stories:
   - {fileID: 11400000, guid: 736bd8fb524c97a4db436a16f3619662, type: 2}
+  - {fileID: 11400000, guid: 23bc12505c680ac4095ec6aa55e41631, type: 2}
   Items: {fileID: 11400000, guid: 3803437a78ca29140b2d31ce8142c95c, type: 2}
   CurrentProgress: 0
   CurrentNodeType: 0
@@ -4153,7 +4154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -306, y: 91.665}
+  m_AnchoredPosition: {x: -201, y: 100}
   m_SizeDelta: {x: 167.4, y: 128.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1164669337

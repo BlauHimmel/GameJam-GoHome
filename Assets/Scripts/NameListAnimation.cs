@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -11,6 +12,8 @@ public class NameListAnimation : MonoBehaviour
     private Image m_Background1;
     private Image m_Background2;
     private Text m_Text;
+    private Button m_ExitButton;
+    private Image m_ExitBtnImage;
 
     void Start ()
     {
@@ -21,11 +24,29 @@ public class NameListAnimation : MonoBehaviour
         m_Background2 = GameObject.Find("Background2").GetComponentInChildren<Image>();
 
         m_Text = GameObject.Find("Text").GetComponentInChildren<Text>();
+        m_ExitButton = GameObject.Find("ExitButton").GetComponentInChildren<Button>();
+
+        m_ExitButton.onClick.AddListener(() =>
+        {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        });
+
+        m_ExitBtnImage = m_ExitButton.GetComponent<Image>();
+        m_ExitBtnImage.DOFade(0.0f, 0.001f).onComplete += () =>
+        {
+            m_ExitButton.gameObject.SetActive(false);
+        };
 
         m_Background1.gameObject.SetActive(true);
         m_Background2.DOFade(0.0f, 0.001f);
         m_Background2.gameObject.SetActive(false);
         m_Text.gameObject.SetActive(false);
+
+        m_NameList.text = "制作人员名单\n\n岷溪 音效\n可乐 策划\n小云 随便打打杂之类的\n玉米 程序\n";
 
         Animation();
     }
@@ -46,8 +67,11 @@ public class NameListAnimation : MonoBehaviour
                     m_Text.text = string.Empty;
                     m_Background2.DOFade(0.0f, 2.0f).onComplete += () =>
                     {
-                        m_NameList.transform.DOMove(m_TargetPos.position, 15.0f).SetEase(Ease.Linear);
-
+                        m_NameList.transform.DOMove(m_TargetPos.position, 15.0f).SetEase(Ease.Linear).onComplete += () =>
+                        {
+                            m_ExitButton.gameObject.SetActive(true);
+                            m_ExitBtnImage.DOFade(1.0f, 1.0f);
+                        };
                     };
                 };
             };

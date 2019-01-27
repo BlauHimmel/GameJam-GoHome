@@ -24,6 +24,8 @@ public enum Event
     ACTION_TRIGGER,
     ACTION_CHOOSE_LEFT,
     ACTION_CHOOSE_RIGHT,
+
+    STATION_ARRIVED,
 }
 
 public class EventManager

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 {
     private Image m_StatioBar;
 
+    private GameObject m_AttributeGO;
     private Text m_PropertyHappyText;
     private Image m_PropertyHappyIcon;
     private Text m_PropertyHungryText;
@@ -59,6 +60,7 @@ public class UIManager : MonoBehaviour
     {
         m_StatioBar = GameObject.Find("Station").GetComponentInChildren<Image>();
 
+        m_AttributeGO = GameObject.Find("Attribute");
         m_PropertyHappyText = GameObject.Find("Happy").GetComponentInChildren<Text>();
         m_PropertyHappyIcon = GameObject.Find("Happy").GetComponentInChildren<Image>();
         m_PropertyHappyIcon.sprite = null;
@@ -181,6 +183,14 @@ public class UIManager : MonoBehaviour
                     m_LockscreenImage.transform.SetAsFirstSibling();
                 }
             };
+        }
+    }
+
+    public void SetAttributeVisible(bool IsVisible)
+    {
+        if (m_AttributeGO != null)
+        {
+            m_AttributeGO.SetActive(IsVisible);
         }
     }
 

@@ -38,6 +38,8 @@ public class GameCore : MonoBehaviour
         EventManager.Register(Event.BRANCH_SELECT_LEFT, EventCallback);
         EventManager.Register(Event.BRANCH_SELECT_RIGHT, EventCallback);
 
+        EventManager.Register(Event.STATION_ARRIVED, EventCallback);
+
         m_UIManager = GetComponent<UIManager>();
         m_StoryManager = GetComponent<StoryManager>();
         m_AudioManager = GetComponent<AudioManager>();
@@ -47,6 +49,7 @@ public class GameCore : MonoBehaviour
         m_StoryManager.Init();
         m_AudioManager.Init();
 
+        m_UIManager.SetAttributeVisible(false);
         m_UIManager.SetActionVisible(false);
         m_UIManager.SetSelectVisible(false);
         m_UIManager.SetStoryTextVisible(false);
@@ -66,6 +69,9 @@ public class GameCore : MonoBehaviour
             StartCoroutine(DelayLoadScene(3.5f));
         });
 
+        m_AudioManager.BGMPlay("火车运行环境音");
+        m_AudioManager.SoundPlay("嘈杂人声", 0.4f);
+        m_AudioManager.BGMSetVolume(1.0f);
         Debug.Log("Game core init.");
     }
 
@@ -88,6 +94,8 @@ public class GameCore : MonoBehaviour
         EventManager.Remove(Event.BRANCH_TRIGGER, EventCallback);
         EventManager.Remove(Event.BRANCH_SELECT_LEFT, EventCallback);
         EventManager.Remove(Event.BRANCH_SELECT_RIGHT, EventCallback);
+
+        EventManager.Remove(Event.STATION_ARRIVED, EventCallback);
     }
 
     private void EventCallback(object[] Args)
@@ -142,6 +150,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetAvatorVisible(true);
             m_UIManager.SetAvatorData(Story.Icon, Story.CharacterName);
             m_UIManager.SetBackgroundImage(Story.BackgroundImage);
+            m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
             if (Story.BGMPath.Length > 0)
             {
                 m_AudioManager.BGMStop();
@@ -150,12 +159,14 @@ public class GameCore : MonoBehaviour
 
             if (Story.AudioPath.Length > 0)
             {
-                m_AudioManager.SoundAllStop();
+                //m_AudioManager.SoundAllStop();
                 m_AudioManager.SoundPlay(Story.AudioPath);
             }
+
         }
         else if (EventManager.CurrentEvent == Event.STORY_TEXT_NEXT)
         {
+            m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
             if (!m_SelectingBranch && !m_Gaming && !m_Animating)
             {
                 m_StoryManager.ContinueStory();
@@ -176,6 +187,7 @@ public class GameCore : MonoBehaviour
             m_UIManager.SetSelectVisible(true);
             m_UIManager.SetSelectText(Branch.LeftBranchText, Branch.RightBranchText);
             m_UIManager.SetBackgroundImage(Branch.BackgroundImage);
+            m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
             m_SelectingBranch = true;
 
             if (Branch.BGMPath.Length > 0)
@@ -224,9 +236,11 @@ public class GameCore : MonoBehaviour
 
             if (Game.AudioPath.Length > 0)
             {
-                m_AudioManager.SoundAllStop();
+                //m_AudioManager.SoundAllStop();
                 m_AudioManager.SoundPlay(Game.AudioPath);
             }
+
+            m_UIManager.SetStationProgress(m_StoryManager.CurrentProgress);
         }
         else if (EventManager.CurrentEvent == Event.GAME_SUBMIT)
         {
@@ -238,6 +252,7 @@ public class GameCore : MonoBehaviour
             {
                 UpdatePropertyByNode(Game.SuccessPropertyCast);
                 //m_UIManager.SetGamePanelVisible(false);
+                m_UIManager.ClearItemsButtonMark();
                 m_UIManager.SetLockscreenVisible(true);
                 m_StoryManager.ContinueStory();
                 m_Gaming = false;
@@ -258,6 +273,11 @@ public class GameCore : MonoBehaviour
         {
             string ItemName = (string)Args[0];
             m_SelectItem.Remove(ItemName);
+        }
+        /////////////////////////////////////////////////////////////////////////////////////
+        else if (EventManager.CurrentEvent == Event.DESELECT_ITEM)
+        {
+            m_AudioManager.SoundPlay("到站音效");
         }
         /////////////////////////////////////////////////////////////////////////////////////
     }

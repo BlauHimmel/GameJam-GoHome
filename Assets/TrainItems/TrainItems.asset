@@ -19,7 +19,9 @@ MonoBehaviour:
   ItemsAtTrain2:
   - ItemName: "\u65B9\u4FBF\u9762"
   - ItemName: "\u997C\u5E72"
+  - ItemName: "\u5F02\u4E16\u754C\u7684\u5947\u7279\u98DF\u7269"
   ItemsAtTrain3:
   - ItemName: "\u77FF\u6CC9\u6C34"
   - ItemName: "\u53EF\u4E50"
   - ItemName: "\u9762\u5305"
+  - ItemName: "\u5F02\u4E16\u754C\u7684\u6C34\u679C"
