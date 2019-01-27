@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class StartupUI : MonoBehaviour
 {
@@ -27,11 +26,7 @@ public class StartupUI : MonoBehaviour
         m_ExitButton.onClick.AddListener(() =>
         {
             m_AudioManager.BGMStop();
-#if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-#else
             Application.Quit();
-#endif
         });
     }
 }

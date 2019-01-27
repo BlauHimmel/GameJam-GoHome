@@ -10,9 +10,9 @@ public class GameCore : MonoBehaviour
     private StoryManager m_StoryManager;
     private AudioManager m_AudioManager;
 
-    private int m_Happy = 100;
-    private int m_Hungry = 0;
-    private int m_Money = 10000;
+    private int m_Happy = 50;
+    private int m_Hungry = 50;
+    private int m_Money = 30;
     private HashSet<string> m_SelectItem = new HashSet<string>();
     private bool m_SelectingBranch = false;
     private bool m_Gaming = false;
@@ -49,7 +49,7 @@ public class GameCore : MonoBehaviour
         m_StoryManager.Init();
         m_AudioManager.Init();
 
-        m_UIManager.SetAttributeVisible(false);
+        //m_UIManager.SetAttributeVisible(false);
         m_UIManager.SetActionVisible(false);
         m_UIManager.SetSelectVisible(false);
         m_UIManager.SetStoryTextVisible(false);

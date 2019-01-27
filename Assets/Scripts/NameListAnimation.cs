@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -28,11 +27,7 @@ public class NameListAnimation : MonoBehaviour
 
         m_ExitButton.onClick.AddListener(() =>
         {
-#if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-#else
             Application.Quit();
-#endif
         });
 
         m_ExitBtnImage = m_ExitButton.GetComponent<Image>();
@@ -46,7 +41,7 @@ public class NameListAnimation : MonoBehaviour
         m_Background2.gameObject.SetActive(false);
         m_Text.gameObject.SetActive(false);
 
-        m_NameList.text = "制作人员名单\n\n岷溪 音效\n可乐 策划\n小云 随便打打杂之类的\n玉米 程序\n";
+        m_NameList.text = "制作人员名单\n\n陈良昱 策划\n李晨 策划\n岷溪 音效\n可乐 策划\n小云 随便打打杂之类的\n玉米 程序\n并不存在的美术\n";
 
         Animation();
     }
