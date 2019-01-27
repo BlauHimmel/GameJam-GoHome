@@ -86,7 +86,7 @@ MonoBehaviour:
       Enable: 1
       Text: "\u4E00\u4E2A\u753B\u98CE\u5947\u7279\u3001\u7684\u7537\u4EBA\u8D70\u4E86\u8FC7\u6765"
       CharacterName: "\u65C1\u767D"
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 3b4873c201f623448b1627ceea910ca4, type: 3}
       AudioPath: 
       BackgroundImage: {fileID: 0}
       BGMPath: 
@@ -196,7 +196,7 @@ MonoBehaviour:
       Enable: 1
       Text: "\u753B\u98CE\u5947\u7279\u7684\u7537\u4EBA\u7528\u4E00\u79CD\u5947\u602A\u7684\u773C\u795E\u76EF\u7740\u4F60"
       CharacterName: "\u65C1\u767D"
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 3b4873c201f623448b1627ceea910ca4, type: 3}
       AudioPath: 
       BackgroundImage: {fileID: 0}
       BGMPath: 
@@ -746,7 +746,7 @@ MonoBehaviour:
       Enable: 1
       Text: "\u7537\u4EBA\u7528\u4ED6\u770B\u4F3C\u8BC6\u7834\u4E86\u4E00\u5207\u7684\u773C\u795E\u76EF\u7740\u6211\u3002"
       CharacterName: "\u65C1\u767D"
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 3b4873c201f623448b1627ceea910ca4, type: 3}
       AudioPath: 
       BackgroundImage: {fileID: 0}
       BGMPath: 
@@ -911,7 +911,7 @@ MonoBehaviour:
       Enable: 1
       Text: "\u7537\u4EBA\u76EF\u7740\u6211\u770B\u4E86\u4E00\u4F1A\u513F\uFF0C\u8F6C\u8EAB\u62FF\u7740\u86CB\u5305\u996D\u8D70\u4E86\u3002"
       CharacterName: "\u65C1\u767D"
-      Icon: {fileID: 0}
+      Icon: {fileID: 21300000, guid: 3b4873c201f623448b1627ceea910ca4, type: 3}
       AudioPath: 
       BackgroundImage: {fileID: 0}
       BGMPath: 

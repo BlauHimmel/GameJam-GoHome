@@ -52,7 +52,7 @@ public class GameCore : MonoBehaviour
         m_UIManager.SetStoryTextVisible(false);
         m_UIManager.SetAvatorVisible(false);
         m_UIManager.SetProgressVisible(false);
-        m_UIManager.SetGamePanelVisible(false);
+        //m_UIManager.SetGamePanelVisible(false);
 
         m_UIManager.SetHappyValue(m_Happy);
         m_UIManager.SetHungryValue(m_Hungry);
@@ -63,7 +63,7 @@ public class GameCore : MonoBehaviour
         m_StoryManager.SetOnStoryCompleteCallback(() =>
         {
             // m_Happy, m_Hungry, m_Money
-            SceneManager.LoadScene("LastScene");
+            StartCoroutine(DelayLoadScene(3.5f));
         });
 
         Debug.Log("Game core init.");
@@ -211,7 +211,8 @@ public class GameCore : MonoBehaviour
         {
             Story.GameNode Game = (Story.GameNode)m_StoryManager.CurrentNode;
             m_UIManager.SetGamePanelText(Game.Text);
-            m_UIManager.SetGamePanelVisible(true);
+            //m_UIManager.SetGamePanelVisible(true);
+            m_UIManager.SetLockscreenVisible(false);
             m_UIManager.SetBackgroundImage(Game.BackgroundImage);
             m_Gaming = true;
 
@@ -236,7 +237,8 @@ public class GameCore : MonoBehaviour
             if (Success)
             {
                 UpdatePropertyByNode(Game.SuccessPropertyCast);
-                m_UIManager.SetGamePanelVisible(false);
+                //m_UIManager.SetGamePanelVisible(false);
+                m_UIManager.SetLockscreenVisible(true);
                 m_StoryManager.ContinueStory();
                 m_Gaming = false;
             }
@@ -277,5 +279,11 @@ public class GameCore : MonoBehaviour
             m_Money += PropertyNode.AttributeNumber;
             m_UIManager.SetMoneyValue(m_Money);
         }
+    }
+
+    private IEnumerator DelayLoadScene(float Time)
+    {
+        yield return new WaitForSeconds(Time);
+        SceneManager.LoadScene("LastScene");
     }
 }

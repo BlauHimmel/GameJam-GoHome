@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     private GameObject[] m_ItemButtonsPanelGo;
     private Dictionary<string, Text> m_StringTextDict = new Dictionary<string, Text>();
     private Button m_OKButton;
+    private Image m_LockscreenImage;
 
     private Image m_BackgroundImage;
 
@@ -105,6 +106,7 @@ public class UIManager : MonoBehaviour
         m_ItemButtonsPanelGo[1] = GameObject.Find("ItemButtons1");
         m_ItemButtonsPanelGo[2] = GameObject.Find("ItemButtons2");
         m_ItemButtonsPanelGo[3] = GameObject.Find("ItemButtons3");
+        m_LockscreenImage = GameObject.Find("Lockscreen").GetComponentInChildren<Image>();
 
         m_OKButton = GameObject.Find("OKButton").GetComponentInChildren<Button>();
 
@@ -160,6 +162,25 @@ public class UIManager : MonoBehaviour
         if (m_ProgressGO != null)
         {
             m_ProgressGO.SetActive(IsVisible);
+        }
+    }
+
+    public void SetLockscreenVisible(bool IsVisible)
+    {
+        if (m_LockscreenImage != null)
+        {
+            if (IsVisible)
+            {
+                m_LockscreenImage.transform.SetAsLastSibling();
+            }
+            float TargetAlpha = IsVisible ? 1.0f : 0.0f;
+            m_LockscreenImage.DOFade(TargetAlpha, 0.65f).onComplete += () =>
+            {
+                if (!IsVisible)
+                {
+                    m_LockscreenImage.transform.SetAsFirstSibling();
+                }
+            };
         }
     }
 
