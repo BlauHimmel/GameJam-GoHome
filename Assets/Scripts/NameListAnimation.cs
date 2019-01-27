@@ -41,7 +41,7 @@ public class NameListAnimation : MonoBehaviour
         m_Background2.gameObject.SetActive(false);
         m_Text.gameObject.SetActive(false);
 
-        m_NameList.text = "制作人员名单\n\n陈良昱 策划\n李晨 策划\n岷溪 音效\n可乐 策划\n小云 随便打打杂之类的\n玉米 程序\n并不存在的美术\n";
+        m_NameList.text = "制作人员名单\n\n程序 从网上抄的\n美术 东拼西凑的\n策划 鬼知道这群B从哪混进来的\n音效 自己喊出来的\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n陈良昱 策划\n李晨 策划\n岷溪 音效\n可乐 策划\n小云 随便打打杂之类的\n玉米 程序\n并不存在的美术\n\n\n感谢本次活动中那些帮助过我们的人(美术)\n";
 
         Animation();
     }
@@ -62,7 +62,7 @@ public class NameListAnimation : MonoBehaviour
                     m_Text.text = string.Empty;
                     m_Background2.DOFade(0.0f, 2.0f).onComplete += () =>
                     {
-                        m_NameList.transform.DOMove(m_TargetPos.position, 15.0f).SetEase(Ease.Linear).onComplete += () =>
+                        m_NameList.transform.DOMove(m_TargetPos.position, 20.0f).SetEase(Ease.Linear).onComplete += () =>
                         {
                             m_ExitButton.gameObject.SetActive(true);
                             m_ExitBtnImage.DOFade(1.0f, 1.0f);
