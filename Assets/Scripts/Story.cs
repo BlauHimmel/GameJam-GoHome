@@ -34,6 +34,7 @@ public class Story : ScriptableObject
     {
         public bool Enable;
 
+        [Multiline(8)]
         public string Text;
         public string AudioPath;
         public List<string> RequestItems;
